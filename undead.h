@@ -45,8 +45,14 @@ class UndeadAdapter : public Character {
 public:
     UndeadAdapter(shared_ptr<Undead> u) { 
         /* TODO */
+        undead = u;
+        description = undead->name();
+        type = CharacterType::Unknown;
     }
-    int getAttack() const override { /* TODO */ return 0; }
-    int getSpeed() const override { /* TODO */ return 0; }
-    int getDefense() const override { /* TODO */ return 0; }
+    ~UndeadAdapter() override {
+        cout << "Delete Character: " << description << endl;
+    }
+    int getAttack() const override { /* TODO */ return undead->power(); }
+    int getSpeed() const override { /* TODO */ return undead->agility(); }
+    int getDefense() const override { /* TODO */ return undead->endurance(); }
 };
